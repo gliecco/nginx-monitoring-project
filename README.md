@@ -59,7 +59,7 @@ Após isso, instale o Nginx:
 sudo apt install nginx
 ```
 
-Inicie Nginx:
+Inicie o Nginx:
 
 ```bash
 sudo systemctl start nginx
