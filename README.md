@@ -72,9 +72,11 @@ sudo systemctl status nginx
 ```
 
 Caso o Nginx esteja rodando corretamente, o comando retornará uma saída como esta:
+
 ![Status do Nginx Ativo](imgs/nginx_status.jpeg)
 
 Para verificar se o Nginx está funcional, acesse a página padrão do Nginx pelo navegador digitando "localhost" na barra de endereços:
+
 ![Página Padrão do Nginx](imgs/nginx_via_localhost.jpeg)
 
 ## Configuração dos arquivos de log
