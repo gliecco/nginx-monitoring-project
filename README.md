@@ -1,4 +1,4 @@
-# Automação no Linux para monitoramento de um servidor Nginx
+# Monitoramento do Nginx Automatizado no Ubuntu 20.04 LTS
 
 ## Sobre o projeto
 A prática consiste na instalação do WSL (Subsistema do Windows para Linux) no Windows e na criação de uma instância Ubuntu 20.04 LTS. Inclui também a configuração de um servidor Nginx, o monitoramento do status do serviço por meio de um script personalizado e a automação da execução deste script a cada 5 minutos. O script deve conter a data, hora, o nome do serviço, o status e uma mensagem personalizada de ONLINE ou OFFLINE. O objetivo é garantir a continuidade e a disponibilidade do serviço, registrando seu status em arquivos separados.
@@ -9,7 +9,7 @@ A prática consiste na instalação do WSL (Subsistema do Windows para Linux) no
 3. [Instalação e Configuração do Ubuntu 20.04 LTS](#3-instalação-e-configuração-do-ubuntu-2004-lts)
 4. [Instalação e configuração do Nginx no Ubuntu](#instalação-e-configuração-do-nginx-no-ubuntu)
 5. [Configuração dos arquivos de log](#configuração-dos-arquivos-de-log)
-6. [Criação do script de monitoramento do status do serviço Nginx](#criação-do-script-de-monitoramento-do-status-do-serviço-nginx)
+6. [Criação do script de monitoramento do status do Nginx](#criação-do-script-de-monitoramento-do-status-do-nginx)
 7. [Automatização da execução do script](#automatização-da-execução-do-script)
 
 ## 1. Pré-requisitos
@@ -23,14 +23,14 @@ Clique com o botão direito do mouse sobre o PowerShell ou o Prompt de Comando d
 
 Depois, execute o comando:
 
-```
+```powershell
 wsl --install
 ```
 Após executado o comando e terminado a instalação do WSL, reinicie o computador.
 ## 3. Instalação e Configuração do Ubuntu 20.04 LTS
 Abra o PowerShell como administrador e execute o comando:
 
-```
+```powershell
 wsl --install -d Ubuntu-20.04
 ```
 
@@ -40,6 +40,25 @@ Terminado o processo de instalação do Ubuntu no WSL, você será solicitado a 
 
 
 ## Instalação e configuração do Nginx no Ubuntu
+Abra o terminal do Ubuntu e execute o seguinte comando para garantir a instalação do pacote correto e sua versão mais recente:
+
+```bash
+sudo apt update
+```
+
+Após isso, instale o Nginx:
+```bash
+sudo apt install nginx
+```
+Inicie Nginx:
+```bash
+sudo systemctl start nginx
+```
+Verifique o status do Nginx:
+```bash
+sudo systemctl status nginx
+```
+Caso o Nginx esteja rodando corretamente, você deverá ver uma saída do terminal como esta:
 
 ## Configuração dos arquivos de log
 
