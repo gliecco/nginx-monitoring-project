@@ -43,7 +43,7 @@ wsl --install -d Ubuntu-20.04
 
 Alternativamente, você pode abrir a Microsoft Store, buscar por "Ubuntu 20.04 LTS", clicar em adquirir e instalar a distribuição.
 
-Terminado o processo de instalação do Ubuntu no WSL, você será solicitado a criar um Nome de Usuário e Senha. Após criar um nome de usuário e senha, essa conta será o **usuário padrão e administrador da distribuição**, com permissões para executar comandos de super usuário (`sudo`).
+Terminado o processo de instalação do Ubuntu no WSL, você será solicitado a criar um nome de usuário e senha. Esta conta será o **usuário padrão e administrador da distribuição**, com permissões para executar comandos de super usuário (`sudo`).
 
 ## Instalação e configuração do Nginx no Ubuntu
 
@@ -59,13 +59,11 @@ Após isso, instale o Nginx:
 sudo apt install nginx
 ```
 
-Inicie Nginx:
+Inicie e verifique o status do Nginx:
 
 ```bash
 sudo systemctl start nginx
 ```
-
-Verifique o status do Nginx:
 
 ```bash
 sudo systemctl status nginx
@@ -80,6 +78,24 @@ Para verificar se o Nginx está funcional, acesse a página padrão do Nginx pel
 ![Página Padrão do Nginx](imgs/nginx_via_localhost.jpeg)
 
 ## Configuração dos arquivos de log
+
+Antes de configurar o monitoramento, é necessário criar os arquivos de log para armazenar o status do serviço Nginx. Execute os seguintes comandos para criar os arquivos de log:
+
+```bash
+sudo touch /var/log/nginx_online.log
+```
+
+```bash
+sudo touch /var/log/nginx_offline.log
+```
+
+Para garantir que o script tenha permissão para escrever nestes arquivos, ajuste as permissões:
+
+```bash
+sudo chmod 644 /var/log/ngix_online.log /var/log/nginx_offline.log
+```
+
+Nesta configuração, apenas o proprietário poderá escrever nos arquivos, e os demais usuários poderão somente lê-los.
 
 ## Criação do script de monitoramento do status do Nginx
 
