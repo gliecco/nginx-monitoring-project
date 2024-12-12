@@ -82,6 +82,23 @@ Para verificar se o Nginx está funcional, acesse a página padrão do Nginx pel
 
 
 ## Configuração dos arquivos de log
+Antes de configurar o monitoramento, é necessário criar os arquivos de log para armazenar o status do serviço Nginx. Execute os seguintes comandos para criar os arquivos de log:
+
+```bash
+sudo touch /var/log/nginx_online.log
+```
+
+```bash
+sudo touch /var/log/nginx_offline.log
+```
+
+Para garantir que o script tenha permissão para escrever nestes arquivos, ajuste as permissões:
+
+```bash
+sudo chmod 644 /var/log/ngix_online.log /var/log/nginx_offline.log
+```
+Nesta configuração, apenas o proprietário poderá escrever nos arquivos, e os demais usuários poderão somente lê-los.
+
 
 ## Criação do script de monitoramento do status do Nginx
 
