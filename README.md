@@ -105,6 +105,18 @@ sudo chmod 755 /var/log/nginx
 
 ## Criação do script de monitoramento do status do nginx
 
+Primeiramente, crie um diretório dentro do seu diretório pessoal onde o script será armazenado. Para isso, execute o seguinte comando:
+
+```bash
+mkdir ~/scripts
+```
+
+Após isso, utilize um editor de texto para criar e editar o script. Utilizando o editor de texto `nano`:
+
+```bash
+nano ~/scripts/status_nginx.sh
+```
+
 ## Automatização da execução do script
 
 ## Referências
