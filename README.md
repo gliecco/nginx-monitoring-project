@@ -1,4 +1,4 @@
-# Monitoramento do nginx Automatizado no Ubuntu 20.04 LTS
+# Monitoramento Automatizado do nginx no Ubuntu 20.04 LTS
 
 ## Sobre o projeto
 
