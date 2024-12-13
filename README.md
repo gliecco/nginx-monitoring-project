@@ -141,7 +141,7 @@ else
         echo "Data e Hora: $data_hora | Serviço: $servico | Status: $status | O serviço $servico está OFFLINE" >> "$log_offline"
 fi
 ```
-Pressione `CTRL + O` para salvar e `CTRL + X` para sair.
+Pressione `CTRL + O` e `ENTER` para salvar e `CTRL + X` para sair.
 
 
 ## 6. Automatização da execução do script
