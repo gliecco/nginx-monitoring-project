@@ -83,7 +83,7 @@ Antes de criar o script, é necessário que você tenha as permissões corretas 
 ```bash
 ls -ld /var/log/nginx
 ```
-Verifique qual grupo está associado ao diretório e se ele tem permissão de escrita. Caso o grupo não tenha permissão de escrita, ajuste com o comando:
+Verifique qual grupo está associado ao diretório e se ele tem permissão de escrita. Caso contrário, ajuste com o comando:
 
 ```bash
 sudo chmod g+w /var/log/nginx
