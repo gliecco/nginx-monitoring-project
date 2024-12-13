@@ -9,10 +9,9 @@ A prática consiste na instalação do WSL (Subsistema do Windows para Linux) no
 1. [Pré-requisitos](#1-pré-requisitos)
 2. [Ativação e configuração do WSL](#2-ativação-e-configuração-do-wsl)
 3. [Instalação e Configuração do Ubuntu 20.04 LTS](#3-instalação-e-configuração-do-ubuntu-2004-lts)
-4. [Instalação e configuração do nginx no Ubuntu](#instalação-e-configuração-do-nginx-no-ubuntu)
-5. [Configuração dos arquivos de log](#configuração-dos-arquivos-de-log)
-6. [Criação do script de monitoramento do status do nginx](#criação-do-script-de-monitoramento-do-status-do-nginx)
-7. [Automatização da execução do script](#automatização-da-execução-do-script)
+4. [Instalação e configuração do nginx no Ubuntu](#4-instalação-e-configuração-do-nginx-no-ubuntu)
+5. [Criação do script de monitoramento do status do nginx](#5-criação-do-script-de-monitoramento-do-status-do-nginx)
+6. [Automatização da execução do script](#6-automatização-da-execução-do-script)
 
 ## 1. Pré-requisitos
 
@@ -45,7 +44,7 @@ Alternativamente, você pode abrir a Microsoft Store, buscar por "Ubuntu 20.04 L
 
 Terminado o processo de instalação do Ubuntu no WSL, você será solicitado a criar um nome de usuário e senha. Esta conta será o **usuário padrão e administrador da distribuição**, com permissões para executar comandos de super usuário (`sudo`).
 
-## Instalação e configuração do nginx no Ubuntu
+## 4. Instalação e configuração do nginx no Ubuntu
 
 Abra o terminal do Ubuntu e execute o seguinte comando para garantir a instalação do pacote correto e sua versão mais recente:
 
@@ -77,47 +76,68 @@ Você pode verificar se o nginx está funcional acessando a página padrão pelo
 
 ![Página Padrão do nginx](imgs/nginx_via_localhost.jpeg)
 
-## Configuração dos arquivos de log
+## 5. Criação do script de monitoramento do status do nginx
 
-Antes de configurar o monitoramento, é necessário criar os arquivos de log para armazenar o status do serviço nginx. Execute os seguintes comandos para criar os arquivos de log:
-
-```bash
-sudo touch /var/log/nginx/nginx_online.log
-```
+Antes de criar o script, é necessário que você tenha as permissões corretas para acessar e criar os arquivos de log no diretório `/var/log/nginx`. Para garantir que você tem as permissões corretas, execute o seguinte comando:
 
 ```bash
-sudo touch /var/log/nginx/nginx_offline.log
+ls -ld /var/log/nginx
 ```
-
-Para garantir que o script tenha permissão para escrever nestes arquivos, ajuste as permissões:
+Verifique o grupo do diretório e as permissões do grupo. Caso o grupo não tenha permissão de escrita, garanta a permissão de escrita com o seguinte comando:
 
 ```bash
-sudo chmod 664 /var/log/nginx/nginx_online.log /var/log/nginx/nginx_offline.log
+sudo chmod g+w /var/log/nginx
 ```
 
-Nesta configuração, apenas o proprietário e o grupo poderão ler e escrever nos arquivos, e outros usuários poderão somente lê-los.
-
-Além disto, a pasta onde os arquivos de log estão armazenados deve ter as permissões configuradas de modo que o nginx possa modificar arquivos de log. Execute o seguinte comando para garantir que o nginx possa acessar a pasta e modificar arquivos:
-
-```bash
-sudo chmod 755 /var/log/nginx
-```
-
-## Criação do script de monitoramento do status do nginx
-
-Primeiramente, crie um diretório dentro do seu diretório pessoal onde o script será armazenado. Para isso, execute o seguinte comando:
+Após isso, crie um diretório dentro do seu diretório pessoal onde o script será armazenado:
 
 ```bash
 mkdir ~/scripts
 ```
 
-Após isso, utilize um editor de texto para criar e editar o script. Utilizando o editor de texto `nano`:
+E então utilize um editor de texto para criar e editar o script. Utilizando o `nano`:
 
 ```bash
 nano ~/scripts/status_nginx.sh
 ```
 
-## Automatização da execução do script
+Digite o script:
+
+```bash
+#!/bin/bash
+
+# obtém a data e hora atuais
+data_hora=$(date "+%d-%m-%Y %H:%M:%S")
+
+# nome do serviço
+servico="nginx"
+
+# caminho para o arquivo de log online
+log_online="/var/log/nginx/nginx_online.log"
+
+# caminho para o arquivo de log offline
+log_offline="/var/log/nginx/nginx_offline.log"
+
+# verifica se os arquivos de log existem. se não, cria os arquivos
+if [ ! -f "$log_online" ]; then
+        touch "$log_online" "$log_offline"
+fi
+
+if  [ ! -f "$log_offline" ]; then
+        touch "$log_offline"
+fi
+
+# verifica o status do serviço nginx e escreve nos arquivos de log
+status=$(systemctl is-active $servico)
+
+if [ "$status" = "active" ]; then
+        echo "Data e Hora: $data_hora | Serviço: $servico | Status: $status | O serviço $servico está ONLINE." >> "$log_online"
+else
+        echo "Data e Hora: $data_hora | Serviço: $servico | Status: $status | O serviço $servico está OFFLINE" >> "$log_offline"
+fi
+```
+
+## 6. Automatização da execução do script
 
 ## Referências
 
