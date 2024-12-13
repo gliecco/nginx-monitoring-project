@@ -125,7 +125,7 @@ log_offline="/var/log/nginx/nginx_offline.log"
 
 # verifica se os arquivos de log existem. se não, cria os arquivos
 if [ ! -f "$log_online" ]; then
-        touch "$log_online" "$log_offline"
+        touch "$log_online" 
 fi
 
 if  [ ! -f "$log_offline" ]; then
