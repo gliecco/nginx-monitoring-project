@@ -83,10 +83,15 @@ Antes de criar o script, é necessário que você tenha as permissões corretas 
 ```bash
 ls -ld /var/log/nginx
 ```
-Verifique o grupo do diretório e as permissões do grupo. Caso o grupo não tenha permissão de escrita, garanta a permissão de escrita com o seguinte comando:
+Verifique qual grupo está associado ao diretório e se ele tem permissão de escrita. Caso o grupo não tenha permissão de escrita, ajuste com o comando:
 
 ```bash
 sudo chmod g+w /var/log/nginx
+```
+Em seguida, adicione o seu usuário ao grupo específico. Substitua grupo pelo nome do grupo listado no comando `ls -ld /var/log/nginx`e seu_usuario pelo seu nome de usuário.:
+
+```bash
+sudo usermod -aG grupo seu_usuario
 ```
 
 Após isso, crie um diretório dentro do seu diretório pessoal onde o script será armazenado:
