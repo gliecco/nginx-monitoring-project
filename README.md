@@ -119,6 +119,9 @@ data_hora=$(date "+%d-%m-%Y %H:%M:%S")
 # nome do serviço
 servico="nginx"
 
+# status do servico
+status=$(systemctl is-active $servico)
+
 # caminho para o arquivo de log online
 log_online="/var/log/nginx/nginx_online.log"
 
@@ -135,8 +138,6 @@ if  [ ! -f "$log_offline" ]; then
 fi
 
 # verifica o status do serviço nginx e escreve nos arquivos de log
-status=$(systemctl is-active $servico)
-
 if [ "$status" = "active" ]; then
         echo "Data e Hora: $data_hora | Serviço: $servico | Status: $status | O serviço $servico está ONLINE." >> "$log_online"
 else
