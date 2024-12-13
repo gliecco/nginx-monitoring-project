@@ -143,6 +143,14 @@ fi
 ```
 Pressione `CTRL + O` e `ENTER` para salvar e `CTRL + X` para sair.
 
+Para verificar se o script está funcionando corretamente, execute o script manualmente, dentro do seu diretório pessoal:
+
+```bash
+./status_nginx.sh
+```
+
+E verifique os arquivos de log correspondentes. Exemplo do arquivo de log `nginx_online.log` com os logs do serviço ativos:
+
 
 ## 6. Automatização da execução do script
 
