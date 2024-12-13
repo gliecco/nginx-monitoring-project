@@ -83,11 +83,13 @@ Antes de criar o script, é necessário que você tenha as permissões corretas 
 ```bash
 ls -ld /var/log/nginx
 ```
+
 Verifique qual grupo está associado ao diretório e se ele tem permissão de escrita. Caso contrário, ajuste com o comando:
 
 ```bash
 sudo chmod g+w /var/log/nginx
 ```
+
 Em seguida, adicione o seu usuário ao grupo específico. Substitua grupo pelo nome do grupo listado no comando `ls -ld /var/log/nginx`e seu_usuario pelo seu nome de usuário.:
 
 ```bash
@@ -125,7 +127,7 @@ log_offline="/var/log/nginx/nginx_offline.log"
 
 # verifica se os arquivos de log existem. se não, cria os arquivos
 if [ ! -f "$log_online" ]; then
-        touch "$log_online" 
+        touch "$log_online"
 fi
 
 if  [ ! -f "$log_offline" ]; then
@@ -141,9 +143,10 @@ else
         echo "Data e Hora: $data_hora | Serviço: $servico | Status: $status | O serviço $servico está OFFLINE" >> "$log_offline"
 fi
 ```
+
 Pressione `CTRL + O` e `ENTER` para salvar e `CTRL + X` para sair.
 
-Para verificar se o script está funcionando corretamente, execute o script manualmente, dentro do seu diretório pessoal:
+Para verificar se o script está funcionando corretamente, execute o script manualmente dentro do seu diretório pessoal:
 
 ```bash
 ./status_nginx.sh
@@ -151,6 +154,7 @@ Para verificar se o script está funcionando corretamente, execute o script manu
 
 E verifique os arquivos de log correspondentes. Exemplo do arquivo de log `nginx_online.log` com os logs do serviço ativos:
 
+![Logs do nginx Online](imgs/nginx_online_logs.png)
 
 ## 6. Automatização da execução do script
 
