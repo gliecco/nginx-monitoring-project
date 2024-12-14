@@ -12,6 +12,7 @@ A prática consiste na instalação do WSL (Subsistema do Windows para Linux) no
 4. [Instalação e configuração do nginx no Ubuntu](#4-instalação-e-configuração-do-nginx-no-ubuntu)
 5. [Criação do script de monitoramento do status do nginx](#5-criação-do-script-de-monitoramento-do-status-do-nginx)
 6. [Automatização da execução do script](#6-automatização-da-execução-do-script)
+7. [Referências](#7-referencias)
 
 ## 1. Pré-requisitos
 
@@ -157,7 +158,7 @@ E verifique os arquivos de log correspondentes. Exemplo do arquivo de log `nginx
 
 ## 6. Automatização da execução do script
 
-## Referências
+## 7. Referências
 
 - [Documentação do WSL](https://docs.microsoft.com/en-us/windows/wsl/)
 - [Documentação do nginx](https://nginx.org/en/docs/)
