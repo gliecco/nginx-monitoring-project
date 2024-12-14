@@ -16,8 +16,6 @@ A prática consiste na instalação do WSL (Subsistema do Windows para Linux) no
 ## 1. Pré-requisitos
 
 - Windows 10 versão 2004 e superior ou Windows 11
-- Ativação do WSL
-- Ubuntu 20.04 LTS instalado no WSL
 - Conhecimeto básico do terminal Linux
 
 ## 2. Ativação e configuração do WSL
