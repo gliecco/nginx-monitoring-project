@@ -11,7 +11,7 @@ A prática consiste na instalação do WSL (Subsistema do Windows para Linux) no
 3. [Instalação e Configuração do Ubuntu 20.04 LTS](#3-instalação-e-configuração-do-ubuntu-2004-lts)
 4. [Instalação e configuração do nginx no Ubuntu](#4-instalação-e-configuração-do-nginx-no-ubuntu)
 5. [Criação do script de monitoramento do status do nginx](#5-criação-do-script-de-monitoramento-do-status-do-nginx)
-6. [Automatização da execução do script](#6-automatização-da-execução-do-script)
+6. [Automação do script](#6-automação-do-script)
 7. [Referências](#7-referencias)
 
 ## 1. Pré-requisitos
@@ -156,7 +156,7 @@ E verifique os arquivos de log correspondentes. Exemplo do arquivo de log `nginx
 
 ![Logs do nginx Online](imgs/nginx_online_logs.png)
 
-## 6. Automatização da execução do script
+## 6. Automação do script
 
 ## 7. Referências
 
